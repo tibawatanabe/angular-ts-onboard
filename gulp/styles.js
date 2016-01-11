@@ -11,7 +11,8 @@ var $ = require('gulp-load-plugins')();
 var wiredep = require('wiredep').stream;
 var _ = require('lodash');
 
-gulp.task('styles', function () {
+gulp.task('styles', function () {
+
 
   var injectFiles = gulp.src([
     path.join(conf.paths.src, '/app/**/*.styl'),
@@ -29,8 +30,9 @@ gulp.task('styles', function () {
     addRootSlash: false
   };
 
-  var indexFilter = $.filter('index.styl');
-  var vendorFilter = $.filter('vendor.styl');
+  var indexFilter = $.filter('index.styl', {restore: true});
+  var vendorFilter = $.filter('vendor.styl', {restore: true});
+
 
   return gulp.src([
     path.join(conf.paths.src, '/app/index.styl'),
@@ -38,14 +40,18 @@ gulp.task('styles', function () {
   ])
     .pipe(indexFilter)
     .pipe($.inject(injectFiles, injectOptions))
-    .pipe(indexFilter.restore())
+    .pipe(indexFilter.restore)
     .pipe(vendorFilter)
     .pipe(wiredep(_.extend({}, conf.wiredep)))
-    .pipe(vendorFilter.restore())
-    .pipe($.sourcemaps.init())
-    .pipe($.stylus()).on('error', conf.errorHandler('Stylus'))
+    .pipe(vendorFilter.restore)
+
+    .pipe($.sourcemaps.init())
+
+    .pipe($.stylus()).on('error', conf.errorHandler('Stylus'))
+
     .pipe($.autoprefixer()).on('error', conf.errorHandler('Autoprefixer'))
-    .pipe($.sourcemaps.write())
+    .pipe($.sourcemaps.write())
+
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app/')))
     .pipe(browserSync.reload({ stream: true }));
 });
