@@ -30,8 +30,8 @@ gulp.task('styles', function () {
     addRootSlash: false
   };
 
-  var indexFilter = $.filter('index.styl', {restore: true});
-  var vendorFilter = $.filter('vendor.styl', {restore: true});
+  var indexFilter  = $.filter('index.styl', { restore: true });
+  var vendorFilter = $.filter('vendor.styl', { restore: true });
 
 
   return gulp.src([
