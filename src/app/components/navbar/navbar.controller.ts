@@ -6,10 +6,7 @@ module angularTsOnboard {
 
     /* @ngInject */
     constructor () {
-      var vm = this;
-
-      vm.date = new Date();
+      this.date = new Date();
     }
   }
-
 }
