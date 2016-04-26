@@ -12,18 +12,24 @@ This project uses EditorConfig to maintain consistent coding style. Please insta
 
 ### Configuring environment
 
-To run this project, follow these instructions
+To build/run this project, firstly follow these instructions:
 
-- Do this
-- Do that
-- Ensure those
+- Ensure you have and selected a compatible node version by running `nvm list`
+- Make sure you have [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/) installed globally by running `npm list -g`
+  - if you don't have, install by running `npm install -g bower` and `npm install -g gulp`
+- Install all dependencies by running `npm install` and `bower install` (npm might take a long, so be sure to do it in strategical hours)
+
+#### Tips
+
+- to install a node version run `nvm install x.y.z` where `x.y.z` is the version
+- to select an installed version, run `nvm use x.y.z` (if you have a unique version installed, i.e one v5 series, you can abbreviate this command by running `nvm use 5` instead of `nvm use 5.7.1`)
+- every time you open a new terminal, the system selects the `default` node version, you can change the default version by aliasing the version you want `nvm alias default x.y.z`
+- you can short the list npm displays by adding `--depth=0` to list command (i.e `npm list --depth=0`)
 
 
 ### Tested envs
 
-- `this v1` + `that v2` + `those v3`
-- `this v1.5` + `that v2` + `those v3`
-- `this v2` + `that v3` + `those v3.5`
+- `node 5.7.1` + `bower 1.7.9` + `gulp 3.9.1` + `npm 3.6.0`
 
 
 ### Noteworthy dependencies
@@ -36,8 +42,7 @@ To run this project, follow these instructions
 
 To run the app, follow these:
 
-- Do it
-- Do it again
+- run `gulp serve`
 
 
 ## Testing

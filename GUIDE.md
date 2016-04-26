@@ -14,5 +14,12 @@ This guide describes the steps done to complete this project. Each finished step
 ## Project setup
 
 - We are using an angular-boilerplate to generate and setup the inital configuration of this project. Follow the instructions from [here](https://www.npmjs.com/package/generator-angular-boilerplate) making the necessary changes.
-  - in this project, we are using Typescript + Jade, so be sure to select these options when prompted
-  - though we selected to use Jade, the boilerplate creates some HTML files, so, as first task, convert the main.html and navbar.html to jade files.
+  - In this project, we are using Typescript + Jade, so be sure to select these options when prompted
+  - Though we selected to use Jade, the boilerplate creates some HTML files, so, as first task, convert the main.html and navbar.html to jade files.
+
+- This is optional, but we've updated all packages used by this project.
+  - The proccess was manual as we checked if there was a new version available and tried to updated. Of course, as colateral damage, we had to fix some problems (broken build, deprecated code, etc). To make it easier, just copy our package.json and bower.json files.
+
+- Another optional step we made was to change some code (both jade and ts files) in order to make them consistent with some conventions we use. We consider extremely important because this also ensures our code quality.
+
+- Update README.md defining the tools needed to build this project, node version and so on.
