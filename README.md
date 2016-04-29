@@ -52,8 +52,22 @@ To test feature A, run `this code` then make these actions...
 
 ## Publishing
 
-- Setup the env to staging or production
-- Buy a cheese
+To build a distribution pack, follow these:
+
+- run `gulp build` or `gulp serve:dist`
+
+
+### Selecting configuration file
+
+You can select the configuration you want to use by using `env` arg when running a `gulp` command.
+
+There are 3 available configurations: `development`, `staging` and `production`. If no arg is passed, `development` is selected automatically.
+
+Examples:
+
+- `gulp serve`
+- `gulp serve --env staging`
+- `gulp build --env production`
 
 
 # Post Morten
