@@ -43,3 +43,23 @@ npm install --save-dev url
 # change the port number with the one registered in proxy.js
 curl http://localhost:5000
 ```
+
+### Configuration
+
+- In this task we are changing the build pipeline to inject some data from configuration files. The idea is to read a json file and inject its content in compilation-time so the code can access its data in runtime (similar to env variables, or compile-time defs in C/C++).
+  - **There is only one limitation using this method: the injection implementation can replace strings only**. So in order to inject complex data type (like objects) we have to stringify the data in compilation time and parse it in runtime.
+
+- Create some config files. Generally we create a folder `config` and at least three files (one for each environment): `development.json`, `staging.json` and `production.json`.
+- Read the content of the configuration using `fs.readFileSync()` (optionally you can `JSON.parse` it to manipulate the data before code injection).
+- Inject the config (as string) in build pipeline using `gulp-replace`. This must be done before Typescript compilation.
+  - **Tip:** use unique (but understandable) identifiers to use as replacement keys (i.e `$$settings` or `$$config`).
+  - Remember to parse the injected data (if it is a complex data type) before using it.
+- In order to change the environment we are also adding some command vars, and capturing the value using `yargs` (i.e `gulp build --env staging` should select `staging.json` to use as config source.
+- Update README.md explaining how to select the config.
+
+- Here is an example using the injected config:
+```typescript
+let config = JSON.parse('$$settings');
+
+console.log(config.someProperty);
+```
